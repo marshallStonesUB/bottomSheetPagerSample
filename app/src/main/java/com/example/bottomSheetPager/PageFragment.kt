@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.fragment_content.*
 import kotlinx.android.synthetic.main.fragment_content.view.*
 
 class PageFragment : Fragment() {
@@ -19,14 +18,9 @@ class PageFragment : Fragment() {
 
     companion object {
         private const val ITEM_COUNT = 30
-        private const val KEY_TITLE = "title"
 
-        fun newInstance(title: String): PageFragment {
-            return PageFragment().apply {
-                arguments = Bundle().apply {
-                    putString(KEY_TITLE, title)
-                }
-            }
+        fun newInstance(): PageFragment {
+            return PageFragment()
         }
     }
     override fun onCreateView(
@@ -41,14 +35,12 @@ class PageFragment : Fragment() {
         initArguments(savedInstanceState)
         val recyclerView = view.recycler_view
         recyclerView.adapter = Adapter(requireContext())
-        pageTitleTextView.text = pageTitle
     }
 
     private fun initArguments(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
             return
         }
-        pageTitle = arguments?.getString(KEY_TITLE) ?: ""
     }
 
     class Adapter(context: Context) : RecyclerView.Adapter<ViewHolder>() {

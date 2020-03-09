@@ -8,18 +8,54 @@
     android:background="@android:color/transparent"
     tools:context=".MainActivity">
 
-    <com.example.bottomSheetPager.BottomSheetViewPager
-        android:id="@+id/view_pager"
+    <LinearLayout
+        android:id="@+id/wrapLayout"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@android:color/transparent"
-        android:elevation="8dp"
+        android:layout_height="match_parent"
         app:behavior_peekHeight="800dp"
         app:behavior_hideable="true"
-        app:layout_behavior="@string/bottom_sheet_behavior"
-        tools:ignore="UnusedAttribute">
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
-    </com.example.bottomSheetPager.BottomSheetViewPager>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+            android:background="@android:color/holo_orange_light"
+            >
+            <TextView
+                android:id="@+id/headerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="pageTitle"
+                android:textStyle="bold"
+                android:textColor="@android:color/black">
+
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.example.bottomSheetPager.BottomSheetViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent"
+            android:elevation="8dp"
+            tools:ignore="UnusedAttribute">
+
+        </com.example.bottomSheetPager.BottomSheetViewPager>
+
+    </LinearLayout>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
